@@ -1,0 +1,45 @@
+<div class="fm" align="center">
+	<h3>Conta de Entrada</h3>
+<form name="contaEntradasForm">
+	<input type="text" ng-model="data" placeholder="Data">
+	<select ng-model="categoria">
+		<option value="">Selecione uma categoria</option>
+		<option value="1">A vista</option>
+	</select>
+	<select ng-model="subcategoria">
+		<option value="">Selecione uma subcategoria</option>
+		<option value="1">blablabla</option>
+	</select>
+	<select ng-model="formaPgto">
+		<option value="">Selecione forma de pgto.</option>
+		<option value="Dinheiro">Dinheiro</option>
+	</select>
+	<input type="text" ng-model="valor">
+	<button class="btn btn-success" ng-click="salvarDados(conta)">Adicionar</button>
+</form>
+</div>
+
+<div class="container">
+<div class="col-md-3">
+	<table class="table table-striped">
+		<tr>
+			<th>Data</th>
+			<th>Categoria</th>
+			<th>Subcategoria</th>
+			<th>Valor</th>
+			<th>Forma pgto.</th>
+			<th>Editar</th>
+			<th>Deletar</th>
+		</tr>
+		<tr ng-repeat="conta in contas">
+			<td>{{conta.data}}</td>
+			<td>{{conta.categoria}}</td>
+			<td>{{conta.subcategoria}}</td>
+			<td>{{conta.valor}}</td>
+			<td>{{conta.forma_pagamento}}</td>
+			<td><button class="btn btn-primary" ng-click="">Editar</button></td>
+			<td><button class="btn btn-danger" ng-click="">Deletar</button></td>
+		</tr>
+	</table>
+</div>
+</div>

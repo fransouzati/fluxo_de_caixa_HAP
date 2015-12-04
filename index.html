@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app="fluxo">
+<head>
+	<title>Fluxojoin</title>
+<meta charset="utf8">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+<script type="text/javascript" src="js/angular-route.js"></script>
+
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-responsive.css">
+<link rel="stylesheet" type="text/css" href="css/fj.css">
+
+<script>
+angular.module("fluxo", ["ngRoute"]);
+
+angular.module("fluxo").config(function ($routeProvider) {
+    $routeProvider
+        .when("/entradas", {
+            templateUrl: "views/entradas.html",
+            controller: "fluxoCtrl"
+        })
+        .when("/saidas", {
+            templateUrl: "views/saidas.html",
+            controller: "fluxoCtrl"
+        })
+})
+
+.controller("fluxoCtrl", function ($scope, $http) {
+
+    var id_empresa = {id_empresa: 1};
+
+    var carregaDadosEntrada = function (id_empresa) {
+        $http.get("php/index.php").success(function(data){
+            console.log(data);
+        })
+    }
+
+    carregaDadosEntrada();
+})
+
+
+
+</script>
+
+</head>
+<body ng-controller="fluxoCtrl">
+	<div ng-include="'views/links.html'"></div>
+	<div ng-view></div>
+
+
+</body>
+</html>
